@@ -1,0 +1,127 @@
+DESCRIÇÃO
+
+Desenvolva uma aplicação contenha todos os parâmetros à seguir: 
+ = Stack Suflex, não obrigatório
+
+
+
+
+= Stack solicitada, obrigatório
+
+Ao finalizar o desafio você deve subir um repositório no Github e nos enviar um email para [
+
+
+
+people@suflex.com.br](mailto:people@suflex.com.br "mailto:people@suflex.com.br") confirmando a entrega com o link do repositório criado.
+
+**O teste**
+
+Você precisa criar uma SPA que vai consumir a [The Rick and Morty API](https://rickandmortyapi.com/ "https://rickandmortyapi.com/"). Escreva o código da melhor forma possível. Você pode consumir a api usando [GraphQL](https://rickandmortyapi.com/documentation/#graphql "https://rickandmortyapi.com/documentation/#graphql") ou [REST](https://rickandmortyapi.com/documentation/#rest "https://rickandmortyapi.com/documentation/#rest"), e também pode usar qualquer framework de CSS para acelerar o desenvolvimento, pois o resultado deve ser totalmente responsivo.
+
+Este desafio consiste em uma listagem de personagens do Rick e Morty , exibindo os detalhes sobre cada personagem (HOME).
+
+Ao efetuar login uma opção de favoritar personagem é disponibilizada, e todos os personagems favoritados são salvos no banco da aplicação. E listado em uma pagina de favoritos também disponível apenas após login.
+
+O banco da aplicação deve conter:
+	Tabela de usuários, contendo o básico para efeutar um login seguro.
+		- nome
+		- senha
+		- data de criação
+	Tabela de personsagens_favoritados, contento todas informações pertinentes ao personagem providos pela API do rick_morty:
+		- id
+		- name
+		- status
+		- species
+		- type
+		- gender
+		- origin: { name, url }
+		- location: { name, url }
+		- image
+		- episode": []
+		- url
+		- created
+
+
+Obs: Na Suflex atualmente usamos [GraphQL](https://graphql.org/), [tailwindcss](https://tailwindcss.com/ "https://tailwindcss.com/"), [NestJS](https://nestjs.com/), [Prisma](https://www.prisma.io/) mas sinta-se livre para usar o que preferir, contanto que tenha o Core em [Node.js](https://nodejs.org/en/) e [React](https://reactjs.org/).
+
+**O que seu web app deve ter:** Você deve criar uma página que atenda os seguintes requisitos:
+
+Deslogado:
+- Lista dos personagens com seus respectivos nomes e fotos.
+- Busca por personagens (Nome)
+- Filtro que permita listar todos, só humanos ou só aliens
+- Os filtros devem funcionar sozinhos ou combinados
+- Ao clicar no personagem, permitir a visualização detalhada com pelo menos: Nome, status, specie, quantidade de episódios e data de criação
+- Usuário deve ser capaz de criar uma conta na aplicação
+- Usuário deve ser capaz de logar com a conta criada
+
+Logado
+- Todas as funcionalidade de Deslogado, exceto criar usuário e logar
+- Usuário deve ser capaz de deslogar da aplicação
+- Permitir criar uma lista de favoritos e adicionar/remover personagens nela
+- Persistir a lista favoritada em banco para futuros logins
+
+
+**O que vamos avaliar:**
+
+- Documentação (nos commits e/ou no README,  Conventional Commits)
+- Nível de conhecimento em javascript, nodejs
+- Organização, semântica, estrutura, legibilidade, manutenibilidade do seu código
+- Implementação de todos os requisitos
+- Testes, testes, testes. Pode usar o que você quiser mas precisa testar o código
+- Estruturação de dados
+
+Opcionais:
+- Deploy live da aplicação ou uma estrutura em docker
+- Performance do código, pense em como carregar os dados da forma mais otimizada possível.
+
+OVERVIEW
+--------------------------------------------------------------------
+DATABASE
+
+
+
+
+Postgress
+
+Tabelas
+ - usuario
+ - personagens_favoritos
+
+---------------------------------------------------------------------
+BACKEND - 
+
+
+
+
+NODEJS
+
+
+
+
+ Nestjs + Prisma + Graphql
+
+-  CRUD de Usuários
+- Sistema de Login (
+
+
+
+ JWT )
+-  CRUD de personagens_favoritos
+
+----------------------------------------------------------------------
+FRONTEND 
+
+
+
+
+React
+
+
+
+
+ React + tailwind
+
+- Página de Personagens ( HOME )
+- Página de Login
+- Página de Personagens Favoritos (Area Logada)
