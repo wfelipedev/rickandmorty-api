@@ -8,6 +8,7 @@ import { CharOriginModule } from './char_origin/char_origin.module'
 import { CharLocationModule } from './char_location/char_location.module'
 import { graphqlConfig } from './config/graphql.config'
 import { GraphQLModule } from '@nestjs/graphql'
+import { EpidodeModule } from './epidode/epidode.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { GraphQLModule } from '@nestjs/graphql'
     UserModule,
     FavoriteCharModule,
     CharOriginModule,
-    CharLocationModule
+    CharLocationModule,
+    EpidodeModule
   ]
 })
 export class AppModule {}

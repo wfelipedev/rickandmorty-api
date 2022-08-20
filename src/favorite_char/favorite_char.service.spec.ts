@@ -4,6 +4,8 @@ import { CharLocation } from '../char_location/entity/char_location.entity'
 import { CharLocationRepository } from '../char_location/repository/char_location.repository'
 import { CharOrigin } from '../char_origin/entity/char_origin.entity'
 import { CharOriginRepository } from '../char_origin/repository/char_origin.repository'
+import { Episode } from '../epidode/entity/episode.entity'
+import { EpisodeRepository } from '../epidode/repository/episode.repository'
 import { User } from '../user/entity/user.entity'
 import { CreateFavoriteDTO } from './dto/create-favorite.dto'
 import { FavoriteChar } from './entity/favorite_char.entity'
@@ -27,6 +29,12 @@ const charLocation: CharLocation = {
   id: 'any_id',
   name: 'any_name',
   url: 'any_url'
+}
+
+const episode: Episode = {
+  id: 'any_id',
+  character_id: 'any_character_id',
+  episode: 'any_episode'
 }
 
 const favorite: FavoriteChar = {
@@ -61,7 +69,7 @@ const favoriteDTO: CreateFavoriteDTO = {
     url: 'https://rickandmortyapi.com/api/location/20'
   },
   image: 'https://rickandmortyapi.com/api/character/avatar/11.jpeg',
-  episodes: [''],
+  episode: [''],
   url: 'https://rickandmortyapi.com/api/character/11',
   created: '2017-11-04T20:20:20.965Z'
 }
@@ -75,7 +83,9 @@ const mockRepository = {
   getOriginsById: jest.fn().mockResolvedValue(charOrigin),
   getLocationById: jest.fn().mockResolvedValue(charLocation),
   deleteFavorite: jest.fn().mockResolvedValue(true),
-  getFavoriteByCharId: jest.fn().mockResolvedValue(favorite)
+  getMyFavoriteByCharId: jest.fn().mockResolvedValue(favorite),
+  persistEpisode: jest.fn().mockResolvedValue(episode),
+  getEpisodeByCharId: jest.fn().mockResolvedValue(episode)
 }
 
 describe('FavoriteCharService', () => {
@@ -96,6 +106,10 @@ describe('FavoriteCharService', () => {
         {
           provide: getRepositoryToken(CharLocationRepository),
           useValue: mockRepository
+        },
+        {
+          provide: getRepositoryToken(EpisodeRepository),
+          useValue: mockRepository
         }
       ]
     }).compile()
@@ -106,7 +120,7 @@ describe('FavoriteCharService', () => {
   describe('Persist Favorite Character', () => {
     it('should be able to persist character', async () => {
       jest
-        .spyOn(mockRepository, 'getFavoriteByCharId')
+        .spyOn(mockRepository, 'getMyFavoriteByCharId')
         .mockResolvedValueOnce(null)
 
       const response = await service.persistFavorite(favoriteDTO, user)
@@ -124,7 +138,7 @@ describe('FavoriteCharService', () => {
 
     it('should not be able to persist character - internal error', () => {
       jest
-        .spyOn(mockRepository, 'getFavoriteByCharId')
+        .spyOn(mockRepository, 'getMyFavoriteByCharId')
         .mockRejectedValueOnce(new Error())
 
       const response = service.persistFavorite(favoriteDTO, user)

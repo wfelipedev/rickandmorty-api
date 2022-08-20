@@ -1,6 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm'
 import { FavoriteChar } from '../entity/favorite_char.entity'
 import { CreateFavoriteDTO } from '../dto/create-favorite.dto'
+import { User } from '../../user/entity/user.entity'
 
 @EntityRepository(FavoriteChar)
 export class FavoriteCharRepository extends Repository<FavoriteChar> {
@@ -11,7 +12,9 @@ export class FavoriteCharRepository extends Repository<FavoriteChar> {
   }
 
   async getFavorites(userId: string): Promise<FavoriteChar[]> {
-    const entitiesFound = await this.find()
+    const entitiesFound = await this.find({
+      where: { user_id: userId }
+    })
 
     return entitiesFound
   }
@@ -24,6 +27,17 @@ export class FavoriteCharRepository extends Repository<FavoriteChar> {
 
   async getFavoriteByCharId(id: number): Promise<FavoriteChar> {
     const entityFound = await this.findOne({ where: { char_id: id } })
+
+    return entityFound
+  }
+
+  async getMyFavoriteByCharId(
+    id: number,
+    userId: string
+  ): Promise<FavoriteChar> {
+    const entityFound = await this.findOne({
+      where: { char_id: id, user_id: userId }
+    })
 
     return entityFound
   }

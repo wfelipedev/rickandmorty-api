@@ -98,16 +98,16 @@ export class CreateFavoriteDTO {
   image: string
 
   @ApiProperty({
-    description: 'Episodios em que o Personagem aparece vindo da API',
+    description: 'Episódios em que o Personagem aparece vindo da API',
     example: ['https://rickandmortyapi.com/api/episode/1']
   })
   @IsString({
     each: true,
-    message: 'O campo episodios deve conter apenas texto!'
+    message: 'O campo episódios deve conter apenas texto!'
   })
-  @IsArray({ message: 'Campo episodios deve ser um array.' })
-  @IsNotEmpty({ message: 'O campo episodios é obrigatório!' })
-  episodes: string[]
+  @IsArray({ message: 'Campo episódios deve ser um array.' })
+  @IsNotEmpty({ message: 'O campo episódios é obrigatório!' })
+  episode: string[]
 
   @ApiProperty({
     description: 'URL do Personagem vindo da API',

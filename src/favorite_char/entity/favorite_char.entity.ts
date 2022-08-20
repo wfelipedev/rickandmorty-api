@@ -2,6 +2,7 @@ import { Field, ObjectType } from '@nestjs/graphql'
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 import { CharLocation } from '../../char_location/entity/char_location.entity'
 import { CharOrigin } from '../../char_origin/entity/char_origin.entity'
+import { Episode } from '../../epidode/entity/episode.entity'
 
 @ObjectType('favorite')
 @Entity('favorites')
@@ -38,15 +39,18 @@ export class FavoriteChar {
   @Column()
   origin_id: string
 
-  @Field()
+  @Field(() => CharOrigin)
   origin?: CharOrigin
 
   @Field()
   @Column()
   location_id: string
 
-  @Field()
+  @Field(() => CharLocation)
   location?: CharLocation
+
+  @Field(() => [Episode])
+  episodes?: Episode[]
 
   @Field()
   @Column()
