@@ -20,7 +20,7 @@ export class AuthService {
     try {
       const { name } = dto
 
-      if (await this.checkIfNameExists(name))
+      if (await this.repo.checkIfNameExists(name))
         throw new HttpException(
           'Esse nome já está em uso!',
           HttpStatus.BAD_REQUEST
@@ -30,7 +30,6 @@ export class AuthService {
 
       return { user, msg: 'Usuário cadastrado com sucesso!' }
     } catch (error) {
-      console.log(error)
       if (error instanceof HttpException) {
         throw new HttpException({ message: error.message }, error.getStatus())
       }
@@ -64,23 +63,10 @@ export class AuthService {
 
       return accessTokenDTO
     } catch (error) {
-      console.log(error)
-
       if (error instanceof HttpException) {
         throw new HttpException({ message: error.message }, error.getStatus())
       }
       throw new HttpException('Erro ao fazer login!', HttpStatus.UNAUTHORIZED)
-    }
-  }
-
-  async checkIfNameExists(name: string): Promise<boolean> {
-    try {
-      return this.repo.checkIfNameExists(name)
-    } catch (error) {
-      throw new HttpException(
-        'Erro interno ao tentar verificar nome do usuário!',
-        HttpStatus.INTERNAL_SERVER_ERROR
-      )
     }
   }
 }

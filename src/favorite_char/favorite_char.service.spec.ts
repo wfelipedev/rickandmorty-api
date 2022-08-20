@@ -124,7 +124,7 @@ describe('FavoriteCharService', () => {
 
     it('should not be able to persist character - internal error', () => {
       jest
-        .spyOn(mockRepository, 'persistFavorite')
+        .spyOn(mockRepository, 'getFavoriteByCharId')
         .mockRejectedValueOnce(new Error())
 
       const response = service.persistFavorite(favoriteDTO, user)

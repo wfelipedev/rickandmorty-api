@@ -36,7 +36,8 @@ const accessToken: AccessTokenDTO = {
 
 const mockRepository = {
   signUp: jest.fn().mockResolvedValue(user),
-  validatePassword: jest.fn().mockResolvedValue(user)
+  validatePassword: jest.fn().mockResolvedValue(user),
+  checkIfNameExists: jest.fn().mockResolvedValue(false)
 }
 
 describe('AuthService', () => {
@@ -61,15 +62,15 @@ describe('AuthService', () => {
 
   describe('Sign Up', () => {
     it('should be able to sign up', async () => {
-      jest.spyOn(service, 'checkIfNameExists').mockResolvedValueOnce(false)
-
       const response = await service.signUp(authDTO)
 
       expect(response).toEqual({ user, msg: 'Usuário cadastrado com sucesso!' })
     })
 
     it('should not be able to sign up', () => {
-      jest.spyOn(service, 'checkIfNameExists').mockResolvedValueOnce(true)
+      jest
+        .spyOn(mockRepository, 'checkIfNameExists')
+        .mockResolvedValueOnce(true)
 
       const response = service.signUp(authDTO)
 
@@ -77,7 +78,9 @@ describe('AuthService', () => {
     })
 
     it('should throw error if there is an unexpected error', () => {
-      jest.spyOn(mockRepository, 'signUp').mockRejectedValueOnce(new Error())
+      jest
+        .spyOn(mockRepository, 'checkIfNameExists')
+        .mockRejectedValueOnce(new Error())
 
       const response = service.signUp(authDTO)
 

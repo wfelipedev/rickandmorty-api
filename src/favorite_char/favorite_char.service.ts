@@ -117,7 +117,6 @@ export class FavoriteCharService {
 
       return { msg: 'Personagem removido com sucesso!' }
     } catch (error) {
-      console.log(error)
       if (error instanceof HttpException) {
         throw new HttpException({ message: error.message }, error.getStatus())
       }

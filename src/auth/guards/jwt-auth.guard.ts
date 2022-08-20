@@ -30,7 +30,6 @@ class AuthGuard implements CanActivate {
     try {
       return jwt.verify(token, 'topSecret')
     } catch (err) {
-      console.log(err)
       throw new HttpException('Invalid token', HttpStatus.UNAUTHORIZED)
     }
   }
