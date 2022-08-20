@@ -1,11 +1,11 @@
-# Rick and Morty | Favorite Characters
+# Rick and Morty | Favorite Characters - API
 
 </br>
 
 <p align="center">
-  <a href="#blush-why">Description</a> •
-  <a href="#zap-tech-stack">Tech Stack</a> •
-  <a href="#zap-tech-stack">Features</a> 
+  <a>Description</a> •
+  <a>Tech Stack</a> •
+  <a>Features</a> 
 </p>
 
 </br></br>
@@ -23,10 +23,11 @@
 - [Swagger](https://swagger.io/)
 - [TypeORM](https://typeorm.io/)
 - [GraphQL](https://graphql.org/)
+- [Jest](https://jestjs.io/pt-BR/)
 
 </br></br>
 
-## ✅ **Features**
+## ⚡ **Features**
 
 ### User
 
