@@ -14,7 +14,6 @@ async function bootstrap() {
     .setTitle('Rick and Morty | Favorite Characters')
     .setDescription('API - Save all your favorite characters')
     .setVersion('1.0')
-    .addTag('R&M')
     .build()
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, document)

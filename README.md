@@ -3,10 +3,44 @@
 </br>
 
 <p align="center">
+  <a>Commands</a> •
   <a>Description</a> •
   <a>Tech Stack</a> •
   <a>Features</a> 
 </p>
+
+</br></br>
+
+## ⚡ **Commands**
+
+### Installation
+
+```bash
+$ yarn  - will install all the dependencies
+```
+
+### Running the API
+
+```bash
+$ yarn start:dev - will start the API
+```
+
+### Endpoints
+
+```bash
+# browser swagger url
+$ http://localhost:3333/api
+```
+
+```bash
+# Rest
+$ http://localhost:3333/api/v1 - only POSTs, DELETEs
+```
+
+```bash
+# GraphQL
+$ http://localhost:3333/graphql - only queries
+```
 
 </br></br>
 
